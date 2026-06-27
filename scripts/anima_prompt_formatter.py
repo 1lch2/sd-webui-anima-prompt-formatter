@@ -38,6 +38,12 @@ class AnimaPromptFormatterScript(scripts.Script):
 
     def process(self, p, enable: bool):
         if not enable or shared.opts.forge_preset != "anima":
+            p._anima_formatter_enabled = False
             return
-        p.all_prompts = [format_prompt(prompt) for prompt in p.all_prompts]
-        p.all_negative_prompts = [format_prompt(prompt) for prompt in p.all_negative_prompts]
+        p._anima_formatter_enabled = True
+
+    def process_batch(self, p, *args, **kwargs):
+        if not getattr(p, '_anima_formatter_enabled', False):
+            return
+        p.prompts = [format_prompt(prompt) for prompt in p.prompts]
+        p.negative_prompts = [format_prompt(prompt) for prompt in p.negative_prompts]
