@@ -14,7 +14,6 @@ I also write a ComfyUI custom nodes for this feature: [ComfyUI-AnimaPromptFormat
 - **Remove line breaks** — collapses multi-line prompts into a single line
 - **Filter empty tags** — removes stray commas that produce empty entries
 - **Optional semicolon line breaks** — converts each `;` into one newline when enabled. Consecutive semicolons produce the same number of newlines, including at the start or end of a prompt. Semicolons are preserved when disabled.
-- **Preserve BREAK** — the extension no longer converts the `BREAK` keyword into a newline.
 
 ## Usage
 
